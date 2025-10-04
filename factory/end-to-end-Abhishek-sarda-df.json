@@ -1,0 +1,9 @@
+{
+	"name": "end-to-end-Abhishek-sarda-df",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "3866c013-13bf-420c-bc40-827c21043e0b",
+		"tenantId": "0a83a29b-9ea6-42c5-860a-57f7a6e5a791"
+	}
+}
