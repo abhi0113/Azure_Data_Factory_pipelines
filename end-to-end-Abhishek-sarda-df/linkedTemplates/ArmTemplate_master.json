@@ -31,6 +31,14 @@
 			"type": "string",
 			"defaultValue": "Abhishek"
 		},
+		"csv_event_trig_properties_pipeline1_parameters_p_fileName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"csv_event_trig_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/7d348250-662f-42a3-8219-554d3d6e9ea5/resourceGroups/end-to-end-rg/providers/Microsoft.Storage/storageAccounts/endtoendproj"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -75,6 +83,12 @@
 					},
 					"sqlserverazuresql_properties_typeProperties_userName": {
 						"value": "[parameters('sqlserverazuresql_properties_typeProperties_userName')]"
+					},
+					"csv_event_trig_properties_pipeline1_parameters_p_fileName": {
+						"value": "[parameters('csv_event_trig_properties_pipeline1_parameters_p_fileName')]"
+					},
+					"csv_event_trig_properties_typeProperties_scope": {
+						"value": "[parameters('csv_event_trig_properties_typeProperties_scope')]"
 					}
 				}
 			},

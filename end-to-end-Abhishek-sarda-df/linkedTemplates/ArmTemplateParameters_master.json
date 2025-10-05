@@ -23,6 +23,12 @@
 		"sqlserverazuresql_properties_typeProperties_userName": {
 			"value": "Abhishek"
 		},
+		"csv_event_trig_properties_pipeline1_parameters_p_fileName": {
+			"value": "@triggerBody().fileName"
+		},
+		"csv_event_trig_properties_typeProperties_scope": {
+			"value": "/subscriptions/7d348250-662f-42a3-8219-554d3d6e9ea5/resourceGroups/end-to-end-rg/providers/Microsoft.Storage/storageAccounts/endtoendproj"
+		},
 		"containerUri": {
 			"value": ""
 		},
