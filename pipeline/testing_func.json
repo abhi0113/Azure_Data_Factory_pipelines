@@ -18,7 +18,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT FirstName, LastName, FullName FROM dbo.Customer ')",
+							"value": "@concat('SELECT TOP 10 FirstName, LastName, FullName FROM dbo.Customer\n')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -27,11 +27,12 @@
 					"dataset": {
 						"referenceName": "AzureSqlTable1",
 						"type": "DatasetReference"
-					}
+					},
+					"firstRowOnly": false
 				}
 			},
 			{
-				"name": "ForEach1",
+				"name": "process_employee_records",
 				"type": "ForEach",
 				"dependsOn": [
 					{
@@ -43,6 +44,11 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@activity('get_name').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
 					"activities": [
 						{
 							"name": "v_full_name",
@@ -84,7 +90,7 @@
 								"source": {
 									"type": "AzureSqlSource",
 									"sqlReaderQuery": {
-										"value": "@concat('Update dbo.Customer set FullName = ',\nvariables('full_name'))",
+										"value": "@concat(\n    'UPDATE dbo.Customer SET FullName = ''',\n    variables('full_name'),\n    ''' WHERE FirstName = ''',\n    trim(item().FirstName),\n    ''' AND LastName = ''',\n    trim(item().LastName),\n    '''; SELECT 1;'\n)\n",
 										"type": "Expression"
 									},
 									"queryTimeout": "02:00:00",
