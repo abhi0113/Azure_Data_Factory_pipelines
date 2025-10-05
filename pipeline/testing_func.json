@@ -18,7 +18,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM dbo.Customer WHERE FirstName = ',\n'''',\npipeline().parameters.p_name,\n''''\n)",
+							"value": "@concat('SELECT FirstName, LastName, FullName FROM dbo.Customer ')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -31,8 +31,8 @@
 				}
 			},
 			{
-				"name": "Set variable1",
-				"type": "SetVariable",
+				"name": "ForEach1",
+				"type": "ForEach",
 				"dependsOn": [
 					{
 						"activity": "get_name",
@@ -41,60 +41,65 @@
 						]
 					}
 				],
-				"policy": {
-					"secureOutput": false,
-					"secureInput": false
-				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "full_name",
-					"value": {
-						"value": "@concat(\n    activity('get_name').output.firstRow.FirstName,\n    ' ',\n    activity('get_name').output.firstRow.LastName\n)\n",
-						"type": "Expression"
-					}
-				}
-			},
-			{
-				"name": "update_cust",
-				"type": "Lookup",
-				"dependsOn": [
-					{
-						"activity": "Set variable1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "AzureSqlSource",
-						"sqlReaderQuery": {
-							"value": "@concat('Update dbo.Customer set fullname = ',\nvariables('full_name'),\n' where name = ',\n'''',\npipeline().parameters.p_name,\n''''\n)",
-							"type": "Expression"
+					"activities": [
+						{
+							"name": "v_full_name",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "full_name",
+								"value": {
+									"value": "@concat(item().FirstName, ' ', item().LastName)\n",
+									"type": "Expression"
+								}
+							}
 						},
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
-					},
-					"dataset": {
-						"referenceName": "AzureSqlTable1",
-						"type": "DatasetReference"
-					}
+						{
+							"name": "update_cust",
+							"type": "Lookup",
+							"dependsOn": [
+								{
+									"activity": "v_full_name",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": {
+										"value": "@concat('Update dbo.Customer set FullName = ',\nvariables('full_name'))",
+										"type": "Expression"
+									},
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"dataset": {
+									"referenceName": "AzureSqlTable1",
+									"type": "DatasetReference"
+								}
+							}
+						}
+					]
 				}
 			}
 		],
-		"parameters": {
-			"p_name": {
-				"type": "string"
-			}
-		},
 		"variables": {
 			"full_name": {
 				"type": "String"
