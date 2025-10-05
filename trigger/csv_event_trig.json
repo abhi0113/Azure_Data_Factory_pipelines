@@ -1,0 +1,27 @@
+{
+	"name": "csv_event_trig",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline1",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"p_fileName": "@triggerBody().fileName"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/gold/blobs/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/7d348250-662f-42a3-8219-554d3d6e9ea5/resourceGroups/end-to-end-rg/providers/Microsoft.Storage/storageAccounts/endtoendproj",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
