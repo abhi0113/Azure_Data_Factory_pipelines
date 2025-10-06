@@ -1,12 +1,11 @@
 {
 	"name": "sqlserverazuresql",
-	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "AzureSqlDatabase",
 		"typeProperties": {
-			"server": "azuresqlendtoend.database.windows.net",
-			"database": "adventureworksdb",
+			"server": "adfpractiseazuresqldb.database.windows.net",
+			"database": "AzureSQLDB",
 			"encrypt": "mandatory",
 			"trustServerCertificate": false,
 			"authenticationType": "SQL",
@@ -20,5 +19,6 @@
 				"secretName": "password"
 			}
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
 }
