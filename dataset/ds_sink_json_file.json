@@ -1,0 +1,19 @@
+{
+	"name": "ds_sink_json_file",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorageLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "gold_folder_1",
+				"fileSystem": "gold"
+			}
+		},
+		"schema": {}
+	}
+}
