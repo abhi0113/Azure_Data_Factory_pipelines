@@ -1,0 +1,185 @@
+{
+	"name": "ds_source_text_file",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorageLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "final_dataset.csv",
+				"folderPath": "silver_folder_1/Monash_data_wrangling",
+				"fileSystem": "silver"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Prop_0",
+				"type": "String"
+			},
+			{
+				"name": "Date",
+				"type": "String"
+			},
+			{
+				"name": "HomeTeam",
+				"type": "String"
+			},
+			{
+				"name": "AwayTeam",
+				"type": "String"
+			},
+			{
+				"name": "FTHG",
+				"type": "String"
+			},
+			{
+				"name": "FTAG",
+				"type": "String"
+			},
+			{
+				"name": "FTR",
+				"type": "String"
+			},
+			{
+				"name": "HTGS",
+				"type": "String"
+			},
+			{
+				"name": "ATGS",
+				"type": "String"
+			},
+			{
+				"name": "HTGC",
+				"type": "String"
+			},
+			{
+				"name": "ATGC",
+				"type": "String"
+			},
+			{
+				"name": "HTP",
+				"type": "String"
+			},
+			{
+				"name": "ATP",
+				"type": "String"
+			},
+			{
+				"name": "HM1",
+				"type": "String"
+			},
+			{
+				"name": "HM2",
+				"type": "String"
+			},
+			{
+				"name": "HM3",
+				"type": "String"
+			},
+			{
+				"name": "HM4",
+				"type": "String"
+			},
+			{
+				"name": "HM5",
+				"type": "String"
+			},
+			{
+				"name": "AM1",
+				"type": "String"
+			},
+			{
+				"name": "AM2",
+				"type": "String"
+			},
+			{
+				"name": "AM3",
+				"type": "String"
+			},
+			{
+				"name": "AM4",
+				"type": "String"
+			},
+			{
+				"name": "AM5",
+				"type": "String"
+			},
+			{
+				"name": "MW",
+				"type": "String"
+			},
+			{
+				"name": "HTFormPtsStr",
+				"type": "String"
+			},
+			{
+				"name": "ATFormPtsStr",
+				"type": "String"
+			},
+			{
+				"name": "HTFormPts",
+				"type": "String"
+			},
+			{
+				"name": "ATFormPts",
+				"type": "String"
+			},
+			{
+				"name": "HTWinStreak3",
+				"type": "String"
+			},
+			{
+				"name": "HTWinStreak5",
+				"type": "String"
+			},
+			{
+				"name": "HTLossStreak3",
+				"type": "String"
+			},
+			{
+				"name": "HTLossStreak5",
+				"type": "String"
+			},
+			{
+				"name": "ATWinStreak3",
+				"type": "String"
+			},
+			{
+				"name": "ATWinStreak5",
+				"type": "String"
+			},
+			{
+				"name": "ATLossStreak3",
+				"type": "String"
+			},
+			{
+				"name": "ATLossStreak5",
+				"type": "String"
+			},
+			{
+				"name": "HTGD",
+				"type": "String"
+			},
+			{
+				"name": "ATGD",
+				"type": "String"
+			},
+			{
+				"name": "DiffPts",
+				"type": "String"
+			},
+			{
+				"name": "DiffFormPts",
+				"type": "String"
+			}
+		]
+	}
+}

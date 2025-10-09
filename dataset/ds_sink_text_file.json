@@ -1,0 +1,23 @@
+{
+	"name": "ds_sink_text_file",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorageLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "gold_folder_1",
+				"fileSystem": "gold"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
