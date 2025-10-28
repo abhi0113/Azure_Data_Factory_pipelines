@@ -1,0 +1,21 @@
+{
+	"name": "capstone_proj_excel_ls",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorageLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "Sheet1",
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "training_retail_supply_chain_data.xlsx",
+				"fileSystem": "source"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": []
+	}
+}

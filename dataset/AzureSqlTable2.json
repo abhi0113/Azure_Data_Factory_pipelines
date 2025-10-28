@@ -1,0 +1,16 @@
+{
+	"name": "AzureSqlTable2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Az_Sqldb_Capstone_ls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "Target",
+			"table": "training_retail_supply_chain_data"
+		}
+	}
+}
