@@ -7,25 +7,65 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "end-to-end-Abhishek-sarda-df"
 		},
+		"Az_Sqldb_Capstone_ls_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Az_Sqldb_Capstone_ls'"
+		},
 		"AzureDataLakeStorageLinkedService_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorageLinkedService'"
+		},
+		"AzureDatabricks1_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks1'"
+		},
+		"AzureSqlDatabaseCapstone_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'AzureSqlDatabaseCapstone'"
+		},
+		"Az_Sqldb_Capstone_ls_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "azsqlb.database.windows.net"
+		},
+		"Az_Sqldb_Capstone_ls_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sqldb"
+		},
+		"Az_Sqldb_Capstone_ls_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Abhishek"
 		},
 		"AzureDataLakeStorageLinkedService_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://endtoendproj.dfs.core.windows.net/"
 		},
+		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "1010-141916-98msobkh"
+		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://end-to-end-key-abhi.vault.azure.net/"
 		},
+		"AzureSqlDatabaseCapstone_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "azsqlb.database.windows.net"
+		},
+		"AzureSqlDatabaseCapstone_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sqldb"
+		},
+		"AzureSqlDatabaseCapstone_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Abhishek"
+		},
 		"sqlserverazuresql_properties_typeProperties_server": {
 			"type": "string",
-			"defaultValue": "azuresqlendtoend.database.windows.net"
+			"defaultValue": "adfpractiseazuresqldb.database.windows.net"
 		},
 		"sqlserverazuresql_properties_typeProperties_database": {
 			"type": "string",
-			"defaultValue": "adventureworksdb"
+			"defaultValue": "AzureSQLDB"
 		},
 		"sqlserverazuresql_properties_typeProperties_userName": {
 			"type": "string",
@@ -62,14 +102,44 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"Az_Sqldb_Capstone_ls_password": {
+						"value": "[parameters('Az_Sqldb_Capstone_ls_password')]"
+					},
 					"AzureDataLakeStorageLinkedService_accountKey": {
 						"value": "[parameters('AzureDataLakeStorageLinkedService_accountKey')]"
+					},
+					"AzureDatabricks1_accessToken": {
+						"value": "[parameters('AzureDatabricks1_accessToken')]"
+					},
+					"AzureSqlDatabaseCapstone_password": {
+						"value": "[parameters('AzureSqlDatabaseCapstone_password')]"
+					},
+					"Az_Sqldb_Capstone_ls_properties_typeProperties_server": {
+						"value": "[parameters('Az_Sqldb_Capstone_ls_properties_typeProperties_server')]"
+					},
+					"Az_Sqldb_Capstone_ls_properties_typeProperties_database": {
+						"value": "[parameters('Az_Sqldb_Capstone_ls_properties_typeProperties_database')]"
+					},
+					"Az_Sqldb_Capstone_ls_properties_typeProperties_userName": {
+						"value": "[parameters('Az_Sqldb_Capstone_ls_properties_typeProperties_userName')]"
 					},
 					"AzureDataLakeStorageLinkedService_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorageLinkedService_properties_typeProperties_url')]"
 					},
+					"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('AzureDatabricks1_properties_typeProperties_existingClusterId')]"
+					},
 					"AzureKeyVault1_properties_typeProperties_baseUrl": {
 						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
+					},
+					"AzureSqlDatabaseCapstone_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabaseCapstone_properties_typeProperties_server')]"
+					},
+					"AzureSqlDatabaseCapstone_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabaseCapstone_properties_typeProperties_database')]"
+					},
+					"AzureSqlDatabaseCapstone_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDatabaseCapstone_properties_typeProperties_userName')]"
 					},
 					"csv_event_trig_properties_typeProperties_scope": {
 						"value": "[parameters('csv_event_trig_properties_typeProperties_scope')]"
@@ -86,6 +156,26 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "end-to-end-Abhishek-sarda-df_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'end-to-end-Abhishek-sarda-df_ArmTemplate_0')]"
+			]
 		}
 	]
 }

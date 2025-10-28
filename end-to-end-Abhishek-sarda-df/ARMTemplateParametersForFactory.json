@@ -5,20 +5,50 @@
 		"factoryName": {
 			"value": "end-to-end-Abhishek-sarda-df"
 		},
+		"Az_Sqldb_Capstone_ls_password": {
+			"value": ""
+		},
 		"AzureDataLakeStorageLinkedService_accountKey": {
 			"value": ""
+		},
+		"AzureDatabricks1_accessToken": {
+			"value": ""
+		},
+		"AzureSqlDatabaseCapstone_password": {
+			"value": ""
+		},
+		"Az_Sqldb_Capstone_ls_properties_typeProperties_server": {
+			"value": "azsqlb.database.windows.net"
+		},
+		"Az_Sqldb_Capstone_ls_properties_typeProperties_database": {
+			"value": "sqldb"
+		},
+		"Az_Sqldb_Capstone_ls_properties_typeProperties_userName": {
+			"value": "Abhishek"
 		},
 		"AzureDataLakeStorageLinkedService_properties_typeProperties_url": {
 			"value": "https://endtoendproj.dfs.core.windows.net/"
 		},
+		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+			"value": "1010-141916-98msobkh"
+		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"value": "https://end-to-end-key-abhi.vault.azure.net/"
 		},
+		"AzureSqlDatabaseCapstone_properties_typeProperties_server": {
+			"value": "azsqlb.database.windows.net"
+		},
+		"AzureSqlDatabaseCapstone_properties_typeProperties_database": {
+			"value": "sqldb"
+		},
+		"AzureSqlDatabaseCapstone_properties_typeProperties_userName": {
+			"value": "Abhishek"
+		},
 		"sqlserverazuresql_properties_typeProperties_server": {
-			"value": "azuresqlendtoend.database.windows.net"
+			"value": "adfpractiseazuresqldb.database.windows.net"
 		},
 		"sqlserverazuresql_properties_typeProperties_database": {
-			"value": "adventureworksdb"
+			"value": "AzureSQLDB"
 		},
 		"sqlserverazuresql_properties_typeProperties_userName": {
 			"value": "Abhishek"
