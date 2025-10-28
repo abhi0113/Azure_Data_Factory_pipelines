@@ -1,0 +1,60 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "capstone_proj_excel_ls",
+						"type": "DatasetReference"
+					},
+					"name": "CapstoneDataFlow"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "sink_ds",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Date as date,",
+				"          Product_ID as short,",
+				"          Product_Name as string,",
+				"          Category as string,",
+				"          Units_Sold as short,",
+				"          Revenue as short,",
+				"          Stock_Level as short,",
+				"          Reorder_Threshold as short,",
+				"          Supplier_ID as short,",
+				"          Supplier_Rating as short,",
+				"          Discount_Applied as short,",
+				"          Return_Flag as boolean",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     partitionBy('hash', 1)) ~> CapstoneDataFlow",
+				"CapstoneDataFlow derive(Price_per_product = round(iif(Units_Sold != 0, (Revenue + (Discount_Applied / 100 * Revenue)) / Units_Sold, 0), 2)",
+				") ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}
